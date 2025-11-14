@@ -54,10 +54,10 @@ export default function Home() {
       setCurrentTestimonial((prev) => (prev + 1) % (reviews.length || 1));
     }, 3000);
 
-    // Auto-rotate features every 4 seconds
+    // Auto-rotate features every 2.5 seconds (faster for mobile)
     const featureInterval = setInterval(() => {
       setCurrentFeature((prev) => (prev + 1) % 4);
-    }, 4000);
+    }, 2500);
 
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
@@ -278,28 +278,28 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50" id="features-section" data-animate>
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-purple-50" id="features-section" data-animate>
         <div className={`container mx-auto px-4 transition-all duration-1000 ${isVisible['features-section'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold">Why Choose Us</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Premium cars, transparent pricing, on-time pickups and 24/7 support.</p>
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Why Choose Us</h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto mt-2">Premium cars, transparent pricing, on-time pickups and 24/7 support.</p>
           </div>
           
           <div className="max-w-5xl mx-auto">
             {/* Mobile: Carousel */}
             <div className="md:hidden">
-              <div className="bg-white rounded-2xl shadow-xl p-8 min-h-[280px] flex flex-col items-center justify-center text-center transition-all duration-500">
-                <div className="relative inline-block mb-6">
+              <div className="bg-white rounded-2xl shadow-xl p-6 min-h-[240px] flex flex-col items-center justify-center text-center transition-all duration-500">
+                <div className="relative inline-block mb-4">
                   <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
                   {React.createElement(features[currentFeature].icon, {
-                    className: "relative h-16 w-16 mx-auto text-primary"
+                    className: "relative h-12 w-12 mx-auto text-primary"
                   })}
                 </div>
-                <h4 className="font-bold text-2xl text-primary mb-3">{features[currentFeature].title}</h4>
-                <p className="text-muted-foreground text-lg">{features[currentFeature].description}</p>
+                <h4 className="font-bold text-xl text-primary mb-2">{features[currentFeature].title}</h4>
+                <p className="text-muted-foreground">{features[currentFeature].description}</p>
                 
                 {/* Dots */}
-                <div className="flex items-center gap-2 mt-6">
+                <div className="flex items-center gap-2 mt-5">
                   {features.map((_, i) => (
                     <button
                       key={i}
@@ -307,6 +307,7 @@ export default function Home() {
                       className={`h-2 rounded-full transition-all duration-300 ${
                         i === currentFeature ? 'w-8 bg-primary' : 'w-2 bg-gray-300'
                       }`}
+                      aria-label={`Go to feature ${i + 1}`}
                     />
                   ))}
                 </div>

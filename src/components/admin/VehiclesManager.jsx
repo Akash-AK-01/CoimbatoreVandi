@@ -8,8 +8,9 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { dataService } from '@/lib/mockData';
 import { useToast } from '@/hooks/use-toast';
+import swiftImg from '@/assets/Swift.png';
 
-const DEFAULT_IMAGE = '/src/assets/Swift.png';
+const DEFAULT_IMAGE = swiftImg;
 
 export function VehiclesManager() {
   const [vehicles, setVehicles] = useState([]);

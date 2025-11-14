@@ -321,6 +321,10 @@ export const dataService = {
     localStorage.setItem(STORAGE_KEYS.TESTIMONIALS, JSON.stringify(testimonials));
     return testimonial;
   },
+  deleteTestimonial: (id) => {
+    const testimonials = dataService.getTestimonials().filter(t => t.id !== id);
+    localStorage.setItem(STORAGE_KEYS.TESTIMONIALS, JSON.stringify(testimonials));
+  },
 
   // Pricing
   getPricing: () => JSON.parse(localStorage.getItem(STORAGE_KEYS.PRICING) || '[]'),

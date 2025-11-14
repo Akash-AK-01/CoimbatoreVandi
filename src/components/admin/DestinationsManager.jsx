@@ -8,8 +8,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { dataService } from '@/lib/mockData';
 import { useToast } from '@/hooks/use-toast';
+import ootyImg from '@/assets/ooty.jpg';
 
-const DEFAULT_IMAGE = '/src/assets/ooty.jpg';
+const DEFAULT_IMAGE = ootyImg;
 
 export function DestinationsManager() {
   const [destinations, setDestinations] = useState([]);

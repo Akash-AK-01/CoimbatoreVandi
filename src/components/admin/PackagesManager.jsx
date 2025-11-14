@@ -8,8 +8,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { dataService } from '@/lib/mockData';
 import { useToast } from '@/hooks/use-toast';
+import kodaikanalImg from '@/assets/kodaikanal.png';
 
-const DEFAULT_IMAGE = '/src/assets/kodaikanal.png';
+const DEFAULT_IMAGE = kodaikanalImg;
 
 export function PackagesManager() {
   const [packages, setPackages] = useState([]);
