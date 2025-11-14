@@ -89,12 +89,12 @@ export default function Home() {
   };
 
   const handlePackageClick = (pkg) => {
-    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Price:* ₹${pkg.price}%0A%0APlease provide more details.`;
+    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A%0APlease provide more details.`;
     window.open(`https://wa.me/919444649850?text=${message}`, '_blank');
   };
 
   const handleVehicleClick = (vehicle) => {
-    const message = `Hello! I'm interested in renting the *${vehicle.name}*.%0A%0A*Type:* ${vehicle.type}%0A*Price:* ₹${vehicle.pricePerDay}/day%0A%0APlease provide availability details.`;
+    const message = `Hello! I'm interested in renting the *${vehicle.name}*.%0A%0A*Type:* ${vehicle.type}%0A%0APlease provide availability details.`;
     window.open(`https://wa.me/919444649850?text=${message}`, '_blank');
   };
 
@@ -192,30 +192,26 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             {packages.map((pkg, i) => (
               <div key={pkg.id} style={{ animationDelay: `${i * 100}ms` }} className="animate-fade-in-up">
-                <Card className="group hover:scale-105 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary overflow-hidden">
-                  <Link to="/packages">
+                <Card className="group hover:scale-105 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary overflow-hidden cursor-pointer">
+                  <Link to="/packages" className="block">
                     <div className="relative overflow-hidden">
                       <img src={pkg.image} alt={pkg.name} className="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute top-2 right-2 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
                         {pkg.duration}
                       </div>
                     </div>
-                  </Link>
-                  <CardContent className="pt-4">
-                    <div className="flex items-center justify-between">
-                      <Link to="/packages" className="flex-1">
+                    <CardContent className="pt-4">
+                      <div className="flex flex-col gap-3">
                         <div>
                           <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">{pkg.name}</h3>
-                          <p className="text-sm text-muted-foreground mt-1">{pkg.vehicleType}</p>
+                          <p className="text-sm text-muted-foreground mt-1">{pkg.category}</p>
                         </div>
-                      </Link>
-                      <div className="text-right">
-                        <div className="font-bold text-primary text-xl">₹{pkg.price}</div>
                         <Button 
                           variant="outline" 
                           size="sm" 
-                          className="mt-2 group-hover:bg-primary group-hover:text-white transition-all"
+                          className="w-full group-hover:bg-primary group-hover:text-white transition-all"
                           onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             handlePackageClick(pkg);
                           }}
@@ -223,8 +219,8 @@ export default function Home() {
                           Book Now
                         </Button>
                       </div>
-                    </div>
-                  </CardContent>
+                    </CardContent>
+                  </Link>
                 </Card>
               </div>
             ))}
@@ -252,9 +248,6 @@ export default function Home() {
                     <div className="flex-1">
                       <h4 className="font-semibold group-hover:text-primary transition-colors">{vehicle.name}</h4>
                       <p className="text-sm text-muted-foreground">{vehicle.type} • {vehicle.seats} Seats</p>
-                      <div className="mt-2 flex items-center justify-between">
-                        <div className="font-bold text-primary">₹{vehicle.pricePerDay}/day</div>
-                      </div>
                     </div>
                   </Link>
                   <div className="flex justify-end mt-2">

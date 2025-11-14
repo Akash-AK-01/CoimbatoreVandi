@@ -225,8 +225,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (removed price, added category to packages)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v7';
+  // Check if we need to force refresh (fixed home page data sync)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v8';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -248,8 +248,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v7');
-    console.log('localStorage updated - removed price, added category to packages');
+    localStorage.setItem('images_updated', 'v8');
+    console.log('localStorage updated - fixed home page data sync');
   }
 }
 
