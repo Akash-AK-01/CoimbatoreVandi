@@ -19,7 +19,7 @@ const defaultPackages = [
     price: 8500,
     vehicleType: 'Swift Dzire',
     destinations: ['Ooty', 'Coonoor', 'Botanical Gardens'],
-    image: '/src/assets/ooty.jpg',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
     maxPassengers: 4
   },
@@ -31,7 +31,7 @@ const defaultPackages = [
     price: 9000,
     vehicleType: 'Innova',
     destinations: ['Kodaikanal Lake', 'Coakers Walk', 'Bryant Park'],
-    image: '/src/assets/kodaikanal.png',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
     maxPassengers: 7
   },
@@ -43,7 +43,7 @@ const defaultPackages = [
     price: 12000,
     vehicleType: 'Innova Crysta',
     destinations: ['Munnar', 'Tea Museum', 'Eravikulam National Park'],
-    image: '/src/assets/muunar.png',
+    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges', 'Accommodation'],
     maxPassengers: 7
   }
@@ -58,7 +58,7 @@ const defaultVehicles = [
     pricePerKm: 12,
     pricePerDay: 2500,
     features: ['AC', 'Music System', 'Comfortable Seats'],
-    image: '/src/assets/Swift.png',
+    image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800',
     available: true
   },
   {
@@ -69,7 +69,7 @@ const defaultVehicles = [
     pricePerKm: 15,
     pricePerDay: 3500,
     features: ['AC', 'Music System', 'Spacious', 'Luggage Space'],
-    image: '/src/assets/Innova.png',
+    image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800',
     available: true
   },
   {
@@ -80,7 +80,7 @@ const defaultVehicles = [
     pricePerKm: 18,
     pricePerDay: 4000,
     features: ['Premium AC', 'Leather Seats', 'Push Start', 'Advanced Safety'],
-    image: '/src/assets/wagnor.png',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800',
     available: true
   }
 ];
@@ -92,7 +92,7 @@ const defaultDestinations = [
     description: 'The Queen of Hill Stations',
     distance: '85 km',
     highlights: ['Botanical Gardens', 'Ooty Lake', 'Tea Gardens'],
-    image: '/src/assets/ooty.jpg'
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800'
   },
   {
     id: '2',
@@ -100,7 +100,7 @@ const defaultDestinations = [
     description: 'Hidden Hill Station Gem',
     distance: '110 km',
     highlights: ['Coffee Estates', 'Wildlife', 'Scenic Views'],
-    image: '/src/assets/Valparai.png'
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800'
   },
   {
     id: '3',
@@ -108,7 +108,7 @@ const defaultDestinations = [
     description: 'Coimbatore Airport Pickup & Drop',
     distance: '15 km',
     highlights: ['On-time Service', '24/7 Available', 'Safe & Comfortable'],
-    image: '/src/assets/Airport.png'
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800'
   }
 ];
 
@@ -213,8 +213,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (images updated to local paths)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v2';
+  // Check if we need to force refresh (images updated to working URLs)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v3';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -236,8 +236,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v2');
-    console.log('localStorage updated with local images');
+    localStorage.setItem('images_updated', 'v3');
+    console.log('localStorage updated with working image URLs');
   }
 }
 
