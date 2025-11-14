@@ -172,27 +172,27 @@ export function TestimonialsManager() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
         <div>
-          <h2 className="text-2xl font-bold">Customer Reviews</h2>
-          <p className="text-sm text-muted-foreground mt-1">
+          <h2 className="text-xl md:text-2xl font-bold">Customer Reviews</h2>
+          <p className="text-xs md:text-sm text-muted-foreground mt-1">
             Fetch and approve reviews from Google Form (4+ stars auto-appear on homepage)
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button onClick={fetchGoogleFormResponses} disabled={isLoading} variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+          <Button onClick={fetchGoogleFormResponses} disabled={isLoading} variant="outline" size="sm" className="w-full sm:w-auto">
             <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-            {isLoading ? 'Fetching...' : 'Fetch New Reviews'}
+            <span className="text-xs md:text-sm">{isLoading ? 'Fetching...' : 'Fetch New Reviews'}</span>
           </Button>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button onClick={() => { setEditingReview(null); setFormData(emptyReview); }}>
+              <Button onClick={() => { setEditingReview(null); setFormData(emptyReview); }} size="sm" className="w-full sm:w-auto">
                 <Plus className="h-4 w-4 mr-2" />
-                Add Manually
+                <span className="text-xs md:text-sm">Add Manually</span>
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>{editingReview ? 'Edit' : 'Add New'} Customer Review</DialogTitle>
                 <DialogDescription>
