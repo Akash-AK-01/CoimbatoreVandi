@@ -32,8 +32,8 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all ${solid ? 'bg-white/95 backdrop-blur-md shadow' : 'bg-transparent backdrop-blur-sm'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Rest On Wheels" className="h-12 w-auto" />
-          <span className="hidden md:inline-block font-semibold text-lg">Rest On Wheels</span>
+          <img src={logo} alt="Coimbatore Vandi" className="h-12 w-auto" />
+          <span className="hidden md:inline-block font-semibold text-lg">Coimbatore Vandi</span>
         </Link>
 
         {/* Centered nav */}

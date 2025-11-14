@@ -20,7 +20,7 @@ export default function About() {
       {/* Hero */}
       <section className="gradient-hero text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">About Rest On Wheels</h1>
+          <h1 className="text-5xl font-bold mb-4">About Coimbatore Vandi</h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
             Your trusted travel partner in Coimbatore since 2014
           </p>
@@ -33,7 +33,7 @@ export default function About() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">Our Story</h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Rest On Wheels started in 2014 with a simple vision: to make travel across Tamil Nadu comfortable, 
+              Coimbatore Vandi started in 2014 with a simple vision: to make travel across Tamil Nadu comfortable, 
               safe, and memorable. What began as a small fleet of 5 cars has now grown into a trusted brand with 
               over 50 premium vehicles serving thousands of satisfied customers.
             </p>

@@ -1,5 +1,5 @@
 /**
- * Google Apps Script for Rest On Wheels - Reviews API
+ * Google Apps Script for Coimbatore Vandi - Reviews API
  * 
  * SETUP INSTRUCTIONS:
  * 1. Open your Google Form responses spreadsheet

@@ -124,13 +124,13 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl animate-fade-in-up">
             <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-gray-900" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Welcome to <span className="text-gray-800">Rest On Wheels</span>
+              Welcome to <span className="text-gray-800">Coimbatore Vandi</span>
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-gray-800">
               Your Ride. Your City. Your Style.
             </h2>
             <p className="text-lg mb-8 text-gray-700">
-              At Rest On Wheels, we're not just another taxi service—we're a <em>movement on wheels</em>, 
+              At Coimbatore Vandi, we're not just another taxi service—we're a <em>movement on wheels</em>, 
               driven by pride in our city and love for the road.
             </p>
             <div className="flex gap-3 mb-12">
@@ -412,7 +412,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-2xl font-bold mb-2">We'd Love Your Feedback!</h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      Share your experience with Rest On Wheels and help other travelers make informed decisions.
+                      Share your experience with Coimbatore Vandi and help other travelers make informed decisions.
                     </p>
                   </div>
 

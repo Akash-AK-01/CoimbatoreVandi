@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold text-primary mb-4">Rest On Wheels</h3>
+            <h3 className="text-xl font-bold text-primary mb-4">Coimbatore Vandi</h3>
             <p className="text-muted-foreground">
               Your trusted ride across Tamil Nadu. Professional car rental services for all your travel needs.
             </p>
@@ -118,7 +118,7 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-6 text-center text-muted-foreground">
-          <p>&copy; 2025 Rest On Wheels. Made with ❤️ in Tamil Nadu.</p>
+          <p>&copy; 2025 Coimbatore Vandi. Made with ❤️ in Tamil Nadu.</p>
         </div>
       </div>
     </footer>

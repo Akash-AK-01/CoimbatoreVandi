@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Car, Users, BadgeCheck } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { dataService, initializeData } from '@/lib/mockData';
 import swiftImg from '../assets/Swift.png';
@@ -45,45 +45,81 @@ export default function Vehicles() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-8">
           {vehicles.map((vehicle) => (
-            <Card key={vehicle.id} className="shadow-card hover:shadow-hover transition-all duration-300">
-              <img
-                src={vehicle.image}
-                alt={vehicle.name}
-                className="w-full h-48 object-cover rounded-t-lg"
-              />
-              <CardHeader>
-                <div className="flex justify-between items-start">
+            <div key={vehicle.id} className="grid md:grid-cols-2 gap-6 items-start">
+              {/* Vehicle Card */}
+              <Card className="shadow-card hover:shadow-hover transition-all duration-300">
+                <img
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  className="w-full h-64 object-cover rounded-t-lg"
+                />
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle className="text-2xl">{vehicle.name}</CardTitle>
+                      <CardDescription className="text-base mt-1">{vehicle.type}</CardDescription>
+                    </div>
+                    {vehicle.available && (
+                      <Badge variant="default" className="bg-green-500">Available</Badge>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-base font-medium">{vehicle.seats} Seater</span>
+                  </div>
                   <div>
-                    <CardTitle>{vehicle.name}</CardTitle>
-                    <CardDescription>{vehicle.type}</CardDescription>
+                    <p className="text-sm font-medium mb-3 flex items-center gap-2">
+                      <BadgeCheck className="h-5 w-5" />
+                      Features:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {vehicle.features.map((feature, idx) => (
+                        <Badge key={idx} variant="outline" className="text-sm">{feature}</Badge>
+                      ))}
+                    </div>
                   </div>
-                  {vehicle.available && (
-                    <Badge variant="default" className="bg-green-500">Available</Badge>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm">{vehicle.seats} Seater</span>
-                </div>
-                <div>
-                  <p className="text-sm font-medium mb-2 flex items-center gap-2">
-                    <BadgeCheck className="h-4 w-4" />
-                    Features:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {vehicle.features.map((feature, idx) => (
-                      <Badge key={idx} variant="outline">{feature}</Badge>
-                    ))}
+                </CardContent>
+              </Card>
+
+              {/* Tariff Card */}
+              <Card className="shadow-card">
+                <CardHeader className="bg-primary/5">
+                  <CardTitle className="text-center text-primary text-xl">
+                    {vehicle.type} Tariff
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  {/* Table Header */}
+                  <div className="grid grid-cols-3 bg-primary text-primary-foreground font-semibold text-sm">
+                    <div className="p-3 border-r border-primary-foreground/20">Service</div>
+                    <div className="p-3 border-r border-primary-foreground/20">Price</div>
+                    <div className="p-3">Distance/Duration</div>
                   </div>
-                </div>
-              </CardContent>
-              <CardFooter>
-              </CardFooter>
-            </Card>
+                  
+                  {/* Table Rows */}
+                  {vehicle.tariff && vehicle.tariff.map((tariffItem, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`grid grid-cols-3 text-sm ${idx % 2 === 0 ? 'bg-blue-50' : 'bg-white'}`}
+                    >
+                      <div className="p-3 border-r border-gray-200 font-medium">
+                        {tariffItem.service}
+                      </div>
+                      <div className="p-3 border-r border-gray-200 font-semibold text-primary whitespace-pre-line">
+                        {tariffItem.price}
+                      </div>
+                      <div className="p-3 text-xs text-muted-foreground whitespace-pre-line">
+                        {tariffItem.duration}
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
       </div>

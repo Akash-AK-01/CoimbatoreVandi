@@ -54,7 +54,14 @@ const defaultVehicles = [
     seats: 4,
     features: ['AC', 'Music System', 'Comfortable Seats'],
     image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800',
-    available: true
+    available: true,
+    tariff: [
+      { service: 'City Local Trip', price: '₹25', duration: 'Per Km' },
+      { service: 'Local Rental', price: '₹280-330', duration: '10km Limit / Hr (₹15 per extra Km)' },
+      { service: 'One Day Local Package', price: '₹2800-3300', duration: '100Km - 120Km Limit / 10 - 12hrs (₹11 - ₹14 / extra km)' },
+      { service: 'One Day Round Trip', price: '₹12 - ₹15/Km + Driver beta - ₹400', duration: 'Minimum Distance Required: 350Km' },
+      { service: 'Outstation Package', price: 'Day Rent ₹1800-2000\n₹10 - ₹12/Km', duration: 'Minimum Distance Required - 100Km\n12hrs / day' }
+    ]
   },
   {
     id: '2',
@@ -63,7 +70,14 @@ const defaultVehicles = [
     seats: 7,
     features: ['AC', 'Music System', 'Spacious', 'Luggage Space'],
     image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800',
-    available: true
+    available: true,
+    tariff: [
+      { service: 'City Local Trip', price: '₹30', duration: 'Per Km' },
+      { service: 'Local Rental', price: '₹350-400', duration: '10km Limit / Hr (₹18 per extra Km)' },
+      { service: 'One Day Local Package', price: '₹3500-4000', duration: '100Km - 120Km Limit / 10 - 12hrs (₹14 - ₹16 / extra km)' },
+      { service: 'One Day Round Trip', price: '₹15 - ₹18/Km + Driver beta - ₹500', duration: 'Minimum Distance Required: 350Km' },
+      { service: 'Outstation Package', price: 'Day Rent ₹2200-2500\n₹12 - ₹15/Km', duration: 'Minimum Distance Required - 100Km\n12hrs / day' }
+    ]
   },
   {
     id: '3',
@@ -72,7 +86,14 @@ const defaultVehicles = [
     seats: 7,
     features: ['Premium AC', 'Leather Seats', 'Push Start', 'Advanced Safety'],
     image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800',
-    available: true
+    available: true,
+    tariff: [
+      { service: 'City Local Trip', price: '₹35', duration: 'Per Km' },
+      { service: 'Local Rental', price: '₹400-450', duration: '10km Limit / Hr (₹20 per extra Km)' },
+      { service: 'One Day Local Package', price: '₹4000-4500', duration: '100Km - 120Km Limit / 10 - 12hrs (₹16 - ₹18 / extra km)' },
+      { service: 'One Day Round Trip', price: '₹18 - ₹20/Km + Driver beta - ₹600', duration: 'Minimum Distance Required: 350Km' },
+      { service: 'Outstation Package', price: 'Day Rent ₹2500-3000\n₹15 - ₹18/Km', duration: 'Minimum Distance Required - 100Km\n12hrs / day' }
+    ]
   }
 ];
 
@@ -109,7 +130,7 @@ const defaultTestimonials = [
     name: 'Rajesh Kumar',
     location: 'Coimbatore',
     rating: 5,
-    review: 'Best experience ever! The driver was very professional and the car was in excellent condition. Highly recommend Rest On Wheels for Ooty trips. Worth every penny!',
+    review: 'Best experience ever! The driver was very professional and the car was in excellent condition. Highly recommend Coimbatore Vandi for Ooty trips. Worth every penny!',
     date: '2024-12-15'
   },
   {
@@ -125,7 +146,7 @@ const defaultTestimonials = [
     name: 'Arun Prakash',
     location: 'Bangalore',
     rating: 5,
-    review: 'My best experience with a taxi service! Rest On Wheels made our family trip to Kodaikanal unforgettable. Clean vehicle, punctual service, and excellent driver. Top quality service!',
+    review: 'My best experience with a taxi service! Coimbatore Vandi made our family trip to Kodaikanal unforgettable. Clean vehicle, punctual service, and excellent driver. Top quality service!',
     date: '2024-11-28'
   },
   {
@@ -149,7 +170,7 @@ const defaultTestimonials = [
     name: 'Lakshmi Venkat',
     location: 'Tirupur',
     rating: 5,
-    review: 'My best trip ever! Valparai weekend getaway was amazing thanks to Rest On Wheels. Smooth ride, knowledgeable driver, excellent vehicle quality. Highly satisfied with the experience!',
+    review: 'My best trip ever! Valparai weekend getaway was amazing thanks to Coimbatore Vandi. Smooth ride, knowledgeable driver, excellent vehicle quality. Highly satisfied with the experience!',
     date: '2024-11-05'
   },
   {
@@ -165,7 +186,7 @@ const defaultTestimonials = [
     name: 'Anitha Ravi',
     location: 'Salem',
     rating: 5,
-    review: 'Best service quality! Our Ooty trip was perfect thanks to Rest On Wheels. Clean car, safe driving, and reasonable rates. The driver even helped us book hotels. Excellent experience overall!',
+    review: 'Best service quality! Our Ooty trip was perfect thanks to Coimbatore Vandi. Clean car, safe driving, and reasonable rates. The driver even helped us book hotels. Excellent experience overall!',
     date: '2024-10-18'
   }
 ];
@@ -204,8 +225,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (kept price, removed vehicle details)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v5';
+  // Check if we need to force refresh (added tariff data to vehicles)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v6';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -227,8 +248,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v5');
-    console.log('localStorage updated - kept price, removed vehicle details');
+    localStorage.setItem('images_updated', 'v6');
+    console.log('localStorage updated - added vehicle tariff data');
   }
 }
 
