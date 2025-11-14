@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Car, Clock, Users, MapPin } from 'lucide-react';
+import { Clock, Users, MapPin } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -39,7 +39,7 @@ export default function Packages() {
   }, []);
 
   const handleBookNow = (pkg) => {
-    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Price:* ₹${pkg.price}%0A*Vehicle:* ${pkg.vehicleType}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
+    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
     window.open(`https://wa.me/919444649850?text=${message}`, '_blank');
   };
 
@@ -71,10 +71,6 @@ export default function Packages() {
                   <span>{pkg.duration}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Car className="h-4 w-4" />
-                  <span>{pkg.vehicleType}</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Users className="h-4 w-4" />
                   <span>Up to {pkg.maxPassengers} passengers</span>
                 </div>
@@ -95,11 +91,7 @@ export default function Packages() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-between items-center">
-                <div>
-                  <p className="text-2xl font-bold text-primary">₹{pkg.price}</p>
-                  <p className="text-xs text-muted-foreground">per trip</p>
-                </div>
+              <CardFooter className="flex justify-end items-center">
                 <Button onClick={() => handleBookNow(pkg)}>Book Now</Button>
               </CardFooter>
             </Card>

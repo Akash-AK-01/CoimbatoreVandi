@@ -81,17 +81,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex flex-col items-start gap-2">
-                <div className="flex justify-between w-full">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Per Kilometer</p>
-                    <p className="text-xl font-bold text-primary">₹{vehicle.pricePerKm}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm text-muted-foreground">Per Day</p>
-                    <p className="text-xl font-bold text-primary">₹{vehicle.pricePerDay}</p>
-                  </div>
-                </div>
+              <CardFooter>
               </CardFooter>
             </Card>
           ))}

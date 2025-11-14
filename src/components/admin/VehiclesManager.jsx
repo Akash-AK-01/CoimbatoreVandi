@@ -22,8 +22,6 @@ export function VehiclesManager() {
     name: '',
     type: '',
     seats: '',
-    pricePerKm: '',
-    pricePerDay: '',
     features: '',
     image: '',
     available: true
@@ -45,8 +43,6 @@ export function VehiclesManager() {
       ...formData,
       id: editingVehicle?.id,
       seats: parseInt(formData.seats),
-      pricePerKm: parseFloat(formData.pricePerKm),
-      pricePerDay: parseFloat(formData.pricePerDay),
       features: formData.features.split(',').map(f => f.trim()),
       image: formData.image || DEFAULT_IMAGE
     };
@@ -128,19 +124,9 @@ export function VehiclesManager() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <Label htmlFor="seats">Seats*</Label>
-                  <Input id="seats" name="seats" type="number" value={formData.seats} onChange={handleChange} placeholder="4" required />
-                </div>
-                <div>
-                  <Label htmlFor="pricePerKm">Price/Km (₹)*</Label>
-                  <Input id="pricePerKm" name="pricePerKm" type="number" value={formData.pricePerKm} onChange={handleChange} placeholder="12" required />
-                </div>
-                <div>
-                  <Label htmlFor="pricePerDay">Price/Day (₹)*</Label>
-                  <Input id="pricePerDay" name="pricePerDay" type="number" value={formData.pricePerDay} onChange={handleChange} placeholder="2500" required />
-                </div>
+              <div>
+                <Label htmlFor="seats">Seats*</Label>
+                <Input id="seats" name="seats" type="number" value={formData.seats} onChange={handleChange} placeholder="4" required />
               </div>
 
               <div>
@@ -222,8 +208,7 @@ export function VehiclesManager() {
                 <CardTitle className="text-lg">{vehicle.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-1">{vehicle.type} • {vehicle.seats} Seater</p>
-                <p className="text-sm mb-2">₹{vehicle.pricePerKm}/km • ₹{vehicle.pricePerDay}/day</p>
+                <p className="text-sm text-muted-foreground mb-4">{vehicle.type} • {vehicle.seats} Seater</p>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" onClick={() => handleEdit(vehicle)}>
                     <Edit className="h-4 w-4" />

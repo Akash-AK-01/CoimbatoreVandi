@@ -22,8 +22,6 @@ export function PackagesManager() {
     name: '',
     description: '',
     duration: '',
-    price: '',
-    vehicleType: '',
     destinations: '',
     image: '',
     includes: '',
@@ -45,7 +43,6 @@ export function PackagesManager() {
     const packageData = {
       ...formData,
       id: editingPackage?.id,
-      price: parseFloat(formData.price),
       maxPassengers: parseInt(formData.maxPassengers),
       destinations: formData.destinations.split(',').map(d => d.trim()),
       includes: formData.includes.split(',').map(i => i.trim()),
@@ -227,8 +224,7 @@ export function PackagesManager() {
                 <CardTitle className="text-lg">{pkg.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">{pkg.duration}</p>
-                <p className="text-xl font-bold text-primary mb-4">₹{pkg.price}</p>
+                <p className="text-sm text-muted-foreground mb-4">{pkg.duration}</p>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" onClick={() => handleEdit(pkg)}>
                     <Edit className="h-4 w-4" />

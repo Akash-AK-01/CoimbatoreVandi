@@ -16,8 +16,6 @@ const defaultPackages = [
     name: 'Ooty Hill Station Tour',
     description: 'Experience the Queen of Hill Stations with scenic views, botanical gardens, and cool climate.',
     duration: '2 Days 1 Night',
-    price: 8500,
-    vehicleType: 'Swift Dzire',
     destinations: ['Ooty', 'Coonoor', 'Botanical Gardens'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -28,8 +26,6 @@ const defaultPackages = [
     name: 'Kodaikanal Nature Escape',
     description: 'Explore the Princess of Hill Stations with lakes, waterfalls, and misty mountains.',
     duration: '2 Days 1 Night',
-    price: 9000,
-    vehicleType: 'Innova',
     destinations: ['Kodaikanal Lake', 'Coakers Walk', 'Bryant Park'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -40,8 +36,6 @@ const defaultPackages = [
     name: 'Munnar Tea Garden Tour',
     description: 'Visit Kerala\'s tea country with sprawling plantations and wildlife sanctuaries.',
     duration: '3 Days 2 Nights',
-    price: 12000,
-    vehicleType: 'Innova Crysta',
     destinations: ['Munnar', 'Tea Museum', 'Eravikulam National Park'],
     image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges', 'Accommodation'],
@@ -55,8 +49,6 @@ const defaultVehicles = [
     name: 'Swift Dzire',
     type: 'Sedan',
     seats: 4,
-    pricePerKm: 12,
-    pricePerDay: 2500,
     features: ['AC', 'Music System', 'Comfortable Seats'],
     image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800',
     available: true
@@ -66,8 +58,6 @@ const defaultVehicles = [
     name: 'Toyota Innova',
     type: 'MUV',
     seats: 7,
-    pricePerKm: 15,
-    pricePerDay: 3500,
     features: ['AC', 'Music System', 'Spacious', 'Luggage Space'],
     image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800',
     available: true
@@ -77,8 +67,6 @@ const defaultVehicles = [
     name: 'Innova Crysta',
     type: 'Premium MUV',
     seats: 7,
-    pricePerKm: 18,
-    pricePerDay: 4000,
     features: ['Premium AC', 'Leather Seats', 'Push Start', 'Advanced Safety'],
     image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800',
     available: true
@@ -213,8 +201,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (images updated to working URLs)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v3';
+  // Check if we need to force refresh (removed price and vehicle details)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v4';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -236,8 +224,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v3');
-    console.log('localStorage updated with working image URLs');
+    localStorage.setItem('images_updated', 'v4');
+    console.log('localStorage updated - removed price and vehicle details');
   }
 }
 
