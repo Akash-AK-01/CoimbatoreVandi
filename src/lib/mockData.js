@@ -16,6 +16,7 @@ const defaultPackages = [
     name: 'Ooty Hill Station Tour',
     description: 'Experience the Queen of Hill Stations with scenic views, botanical gardens, and cool climate.',
     duration: '2 Days 1 Night',
+    price: 8500,
     destinations: ['Ooty', 'Coonoor', 'Botanical Gardens'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -26,6 +27,7 @@ const defaultPackages = [
     name: 'Kodaikanal Nature Escape',
     description: 'Explore the Princess of Hill Stations with lakes, waterfalls, and misty mountains.',
     duration: '2 Days 1 Night',
+    price: 9000,
     destinations: ['Kodaikanal Lake', 'Coakers Walk', 'Bryant Park'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -36,6 +38,7 @@ const defaultPackages = [
     name: 'Munnar Tea Garden Tour',
     description: 'Visit Kerala\'s tea country with sprawling plantations and wildlife sanctuaries.',
     duration: '3 Days 2 Nights',
+    price: 12000,
     destinations: ['Munnar', 'Tea Museum', 'Eravikulam National Park'],
     image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges', 'Accommodation'],
@@ -201,8 +204,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (removed price and vehicle details)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v4';
+  // Check if we need to force refresh (kept price, removed vehicle details)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v5';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -224,8 +227,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v4');
-    console.log('localStorage updated - removed price and vehicle details');
+    localStorage.setItem('images_updated', 'v5');
+    console.log('localStorage updated - kept price, removed vehicle details');
   }
 }
 

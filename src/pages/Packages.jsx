@@ -39,7 +39,7 @@ export default function Packages() {
   }, []);
 
   const handleBookNow = (pkg) => {
-    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
+    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Price:* ₹${pkg.price}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
     window.open(`https://wa.me/919444649850?text=${message}`, '_blank');
   };
 
@@ -91,7 +91,11 @@ export default function Packages() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-end items-center">
+              <CardFooter className="flex justify-between items-center">
+                <div>
+                  <p className="text-2xl font-bold text-primary">₹{pkg.price}</p>
+                  <p className="text-xs text-muted-foreground">per trip</p>
+                </div>
                 <Button onClick={() => handleBookNow(pkg)}>Book Now</Button>
               </CardFooter>
             </Card>

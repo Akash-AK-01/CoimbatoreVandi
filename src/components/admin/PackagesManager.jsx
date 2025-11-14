@@ -22,6 +22,7 @@ export function PackagesManager() {
     name: '',
     description: '',
     duration: '',
+    price: '',
     destinations: '',
     image: '',
     includes: '',
@@ -43,6 +44,7 @@ export function PackagesManager() {
     const packageData = {
       ...formData,
       id: editingPackage?.id,
+      price: parseFloat(formData.price),
       maxPassengers: parseInt(formData.maxPassengers),
       destinations: formData.destinations.split(',').map(d => d.trim()),
       includes: formData.includes.split(',').map(i => i.trim()),
@@ -144,11 +146,6 @@ export function PackagesManager() {
               </div>
 
               <div>
-                <Label htmlFor="vehicleType">Vehicle Type*</Label>
-                <Input id="vehicleType" name="vehicleType" value={formData.vehicleType} onChange={handleChange} placeholder="e.g., Swift Dzire / Innova" required />
-              </div>
-
-              <div>
                 <Label htmlFor="destinations">Destinations (comma separated)*</Label>
                 <Input id="destinations" name="destinations" value={formData.destinations} onChange={handleChange} placeholder="e.g., Ooty, Coonoor, Botanical Gardens" required />
                 <p className="text-xs text-muted-foreground mt-1">Separate multiple destinations with commas</p>
@@ -224,7 +221,8 @@ export function PackagesManager() {
                 <CardTitle className="text-lg">{pkg.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{pkg.duration}</p>
+                <p className="text-sm text-muted-foreground mb-2">{pkg.duration}</p>
+                <p className="text-xl font-bold text-primary mb-4">₹{pkg.price}</p>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" onClick={() => handleEdit(pkg)}>
                     <Edit className="h-4 w-4" />
