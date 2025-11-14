@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, Car, MapPin, MessageSquare, LayoutDashboard, LogOut } from 'lucide-react';
+import { Package, Car, MapPin, MessageSquare, LayoutDashboard, LogOut, DollarSign } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,7 @@ import { VehiclesManager } from '@/components/admin/VehiclesManager';
 import { DestinationsManager as LocalManager } from '@/components/admin/DestinationsManager';
 import { TestimonialsManager } from '@/components/admin/TestimonialsManager';
 import { BookingsView } from '@/components/admin/BookingsView';
+import { TariffManager } from '@/components/admin/TariffManager';
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function Admin() {
         </div>
 
         <Tabs defaultValue="dashboard" className="space-y-4 md:space-y-6">
-          <TabsList className="grid w-full grid-cols-3 md:grid-cols-5 h-auto gap-1 bg-muted p-1">
+          <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto gap-1 bg-muted p-1">
             <TabsTrigger value="dashboard" className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-xs md:text-sm py-2 md:py-3">
               <LayoutDashboard className="h-4 w-4" />
               <span className="hidden md:inline">Dashboard</span>
@@ -52,6 +53,10 @@ export default function Admin() {
             <TabsTrigger value="vehicles" className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-xs md:text-sm py-2 md:py-3">
               <Car className="h-4 w-4" />
               <span>Vehicles</span>
+            </TabsTrigger>
+            <TabsTrigger value="tariff" className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-xs md:text-sm py-2 md:py-3">
+              <DollarSign className="h-4 w-4" />
+              <span>Tariff</span>
             </TabsTrigger>
             <TabsTrigger value="destinations" className="flex flex-col md:flex-row items-center gap-1 md:gap-2 text-xs md:text-sm py-2 md:py-3">
               <MapPin className="h-4 w-4" />
@@ -73,6 +78,10 @@ export default function Admin() {
 
           <TabsContent value="vehicles">
             <VehiclesManager />
+          </TabsContent>
+
+          <TabsContent value="tariff">
+            <TariffManager />
           </TabsContent>
 
             <TabsContent value="destinations">

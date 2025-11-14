@@ -16,7 +16,7 @@ const defaultPackages = [
     name: 'Ooty Hill Station Tour',
     description: 'Experience the Queen of Hill Stations with scenic views, botanical gardens, and cool climate.',
     duration: '2 Days 1 Night',
-    price: 8500,
+    category: 'Two Days Package',
     destinations: ['Ooty', 'Coonoor', 'Botanical Gardens'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -27,7 +27,7 @@ const defaultPackages = [
     name: 'Kodaikanal Nature Escape',
     description: 'Explore the Princess of Hill Stations with lakes, waterfalls, and misty mountains.',
     duration: '2 Days 1 Night',
-    price: 9000,
+    category: 'Two Days Package',
     destinations: ['Kodaikanal Lake', 'Coakers Walk', 'Bryant Park'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges'],
@@ -38,7 +38,7 @@ const defaultPackages = [
     name: 'Munnar Tea Garden Tour',
     description: 'Visit Kerala\'s tea country with sprawling plantations and wildlife sanctuaries.',
     duration: '3 Days 2 Nights',
-    price: 12000,
+    category: 'Honeymoon Package',
     destinations: ['Munnar', 'Tea Museum', 'Eravikulam National Park'],
     image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
     includes: ['Fuel', 'Driver allowance', 'Parking fees', 'Toll charges', 'Accommodation'],
@@ -225,8 +225,8 @@ export function forceRefreshData() {
 
 // Initialize localStorage with default data if not exists
 export function initializeData() {
-  // Check if we need to force refresh (added tariff data to vehicles)
-  const needsRefresh = localStorage.getItem('images_updated') !== 'v6';
+  // Check if we need to force refresh (removed price, added category to packages)
+  const needsRefresh = localStorage.getItem('images_updated') !== 'v7';
   
   if (needsRefresh || !localStorage.getItem(STORAGE_KEYS.PACKAGES)) {
     localStorage.setItem(STORAGE_KEYS.PACKAGES, JSON.stringify(defaultPackages));
@@ -248,8 +248,8 @@ export function initializeData() {
   }
   
   if (needsRefresh) {
-    localStorage.setItem('images_updated', 'v6');
-    console.log('localStorage updated - added vehicle tariff data');
+    localStorage.setItem('images_updated', 'v7');
+    console.log('localStorage updated - removed price, added category to packages');
   }
 }
 

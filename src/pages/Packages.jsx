@@ -39,7 +39,7 @@ export default function Packages() {
   }, []);
 
   const handleBookNow = (pkg) => {
-    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Duration:* ${pkg.duration}%0A*Price:* ₹${pkg.price}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
+    const message = `Hello! I'm interested in the *${pkg.name}* package.%0A%0A*Category:* ${pkg.category}%0A*Duration:* ${pkg.duration}%0A*Destinations:* ${pkg.destinations.join(', ')}%0A%0APlease provide more details.`;
     window.open(`https://wa.me/919444649850?text=${message}`, '_blank');
   };
 
@@ -53,8 +53,16 @@ export default function Packages() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {packages.map((pkg) => (
+        {/* Group packages by category */}
+        {['One Day Package', 'Two Days Package', 'Honeymoon Package', 'Weekend Getaway', 'Hill Station Tour'].map(category => {
+          const categoryPackages = packages.filter(pkg => pkg.category === category);
+          if (categoryPackages.length === 0) return null;
+          
+          return (
+            <div key={category} className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 text-primary">{category}</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {categoryPackages.map((pkg) => (
             <Card key={pkg.id} className="shadow-card hover:shadow-hover transition-all duration-300 flex flex-col">
               <img
                 src={pkg.image}
@@ -91,16 +99,15 @@ export default function Packages() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-between items-center">
-                <div>
-                  <p className="text-2xl font-bold text-primary">₹{pkg.price}</p>
-                  <p className="text-xs text-muted-foreground">per trip</p>
-                </div>
+              <CardFooter className="flex justify-end items-center">
                 <Button onClick={() => handleBookNow(pkg)}>Book Now</Button>
               </CardFooter>
             </Card>
           ))}
         </div>
+      </div>
+    );
+  })}
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export function PackagesManager() {
     name: '',
     description: '',
     duration: '',
-    price: '',
+    category: '',
     destinations: '',
     image: '',
     includes: '',
@@ -44,7 +44,6 @@ export function PackagesManager() {
     const packageData = {
       ...formData,
       id: editingPackage?.id,
-      price: parseFloat(formData.price),
       maxPassengers: parseInt(formData.maxPassengers),
       destinations: formData.destinations.split(',').map(d => d.trim()),
       includes: formData.includes.split(',').map(i => i.trim()),
@@ -124,8 +123,22 @@ export function PackagesManager() {
                   <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="e.g., Ooty Weekend Tour" required />
                 </div>
                 <div>
-                  <Label htmlFor="duration">Duration*</Label>
-                  <Input id="duration" name="duration" value={formData.duration} onChange={handleChange} placeholder="e.g., 2 Days 1 Night" required />
+                  <Label htmlFor="category">Package Category*</Label>
+                  <select 
+                    id="category" 
+                    name="category" 
+                    value={formData.category} 
+                    onChange={handleChange} 
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    required
+                  >
+                    <option value="">Select Category</option>
+                    <option value="One Day Package">One Day Package</option>
+                    <option value="Two Days Package">Two Days Package</option>
+                    <option value="Honeymoon Package">Honeymoon Package</option>
+                    <option value="Weekend Getaway">Weekend Getaway</option>
+                    <option value="Hill Station Tour">Hill Station Tour</option>
+                  </select>
                 </div>
               </div>
               
@@ -136,8 +149,8 @@ export function PackagesManager() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="price">Price (₹)*</Label>
-                  <Input id="price" name="price" type="number" value={formData.price} onChange={handleChange} placeholder="3999" required />
+                  <Label htmlFor="duration">Duration*</Label>
+                  <Input id="duration" name="duration" value={formData.duration} onChange={handleChange} placeholder="e.g., 2 Days 1 Night" required />
                 </div>
                 <div>
                   <Label htmlFor="maxPassengers">Max Passengers*</Label>
@@ -221,8 +234,8 @@ export function PackagesManager() {
                 <CardTitle className="text-lg">{pkg.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">{pkg.duration}</p>
-                <p className="text-xl font-bold text-primary mb-4">₹{pkg.price}</p>
+                <p className="text-sm text-muted-foreground mb-1">{pkg.duration}</p>
+                <p className="text-xs font-medium text-primary mb-4">{pkg.category}</p>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline" onClick={() => handleEdit(pkg)}>
                     <Edit className="h-4 w-4" />
