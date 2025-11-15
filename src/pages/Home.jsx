@@ -135,7 +135,7 @@ export default function Home() {
             </p>
             <div className="flex gap-3 mb-12">
               <Link to="/packages"><Button size="lg" className="shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">View Packages</Button></Link>
-              <Link to="/vehicles"><Button size="lg" variant="outline" className="bg-white/80 border-gray-300 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">Self-Drive Cars</Button></Link>
+              <Link to="/vehicles"><Button size="lg" variant="outline" className="bg-white/80 border-gray-300 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">Book Now</Button></Link>
             </div>
 
             {/* Quick Search */}
